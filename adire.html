@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Adire | Nigerian Cultural Heritage</title>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --indigo-deep: #1a237e;
+            --indigo-medium: #283593;
+            --indigo-light: #5c6bc0;
+            --indigo-pale: #e8eaf6;
+            --warm-white: #fafafa;
+            --accent-gold: #ffd700;
+            --text-dark: #212121;
+            --text-gray: #616161;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 999;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: transparent;
+            color: var(--text-gray);
+        }
+
+        .lang-btn.active {
+            background: var(--indigo-deep);
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 35, 126, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--indigo-deep) 0%, var(--indigo-medium) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--indigo-deep);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--indigo-deep), var(--accent-gold));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--indigo-medium);
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(26, 35, 126, 0.1);
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Pattern Generator Section */
+        .generator-section {
+            background: linear-gradient(135deg, var(--indigo-pale) 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(26, 35, 126, 0.1);
+        }
+
+        .generator-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .controls {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--indigo-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .control-group select,
+        .control-group input[type="color"],
+        .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--indigo-pale);
+            border-radius: 8px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .control-group input[type="range"] {
+            padding: 0;
+            height: 8px;
+            background: var(--indigo-pale);
+            outline: none;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--indigo-deep);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .pattern-canvas-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #patternCanvas {
+            border: 2px solid var(--indigo-pale);
+            border-radius: 10px;
+            max-width: 100%;
+            background: white;
+        }
+
+        .pattern-info {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--indigo-pale);
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .pattern-info h4 {
+            color: var(--indigo-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--indigo-deep);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--indigo-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--indigo-deep);
+            border: 2px solid var(--indigo-deep);
+            margin-top: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--indigo-pale);
+        }
+
+        /* Pattern Gallery */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pattern-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(26, 35, 126, 0.2);
+        }
+
+        .pattern-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--indigo-pale) 0%, var(--indigo-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .pattern-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .pattern-card:hover .pattern-image img {
+            transform: scale(1.1);
+        }
+
+        .pattern-content {
+            padding: 1.5rem;
+        }
+
+        .pattern-content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--indigo-deep);
+        }
+
+        .pattern-content p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Techniques Section */
+        .techniques {
+            background: var(--indigo-pale);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .technique-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .technique-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--indigo-deep);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .technique-item h4 {
+            color: var(--indigo-deep);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Pattern Meanings Table */
+        .meanings-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(26, 35, 126, 0.1);
+        }
+
+        .pattern-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .pattern-table th,
+        .pattern-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .pattern-table th {
+            background: var(--indigo-deep);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .pattern-table tr:hover {
+            background: var(--indigo-pale);
+        }
+
+        .pattern-table td:first-child {
+            font-weight: 600;
+            color: var(--indigo-deep);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--indigo-deep);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 10rem;
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Cultural Significance */
+        .significance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .significance-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .significance-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .significance-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .significance-card h4 {
+            color: var(--indigo-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Back to Portfolio Button */
+        .back-link {
+            display: inline-block;
+            margin: 3rem auto;
+            padding: 1rem 2.5rem;
+            background: var(--indigo-deep);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .back-link:hover {
+            background: var(--indigo-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(26, 35, 126, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--indigo-deep);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .lang-toggle {
+                top: 80px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .intro,
+            .techniques,
+            .meanings-section,
+            .generator-section {
+                padding: 2rem;
+            }
+
+            .pattern-table {
+                font-size: 0.9rem;
+            }
+
+            .pattern-table th,
+            .pattern-table td {
+                padding: 0.8rem;
+            }
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('en')" id="btn-en">English</button>
+        <button class="lang-btn" onclick="switchLang('yo')" id="btn-yo">Yorùbá</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo" data-en="Adire Heritage" data-yo="Àṣà Adire">Adire Heritage</a>
+        <ul class="nav-links">
+            <li><a href="#introduction" data-en="Introduction" data-yo="Ìfihàn">Introduction</a></li>
+            <li><a href="#generator" data-en="Create Pattern" data-yo="Ṣe Àwòṣe">Create Pattern</a></li>
+            <li><a href="#patterns" data-en="Gallery" data-yo="Àwòrán">Gallery</a></li>
+            <li><a href="#techniques" data-en="Techniques" data-yo="Ọgbọ́n">Techniques</a></li>
+            <li><a href="#meanings" data-en="Meanings" data-yo="Ìtumọ̀">Meanings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-en="The Art of Adire" data-yo="Ọ̀gbọ́n Adire">The Art of Adire</h1>
+            <p class="hero-subtitle"
+                data-en="Discover the ancient Yoruba textile dyeing technique that tells stories through patterns"
+                data-yo="Wá àṣà àtijọ́ Yorùbá tí ó ń sọ ìtàn nípasẹ̀ àwọn àwòṣe">Discover the ancient Yoruba textile
+                dyeing technique that tells stories through patterns</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Introduction -->
+    <section id="introduction">
+        <div class="intro">
+            <h2 data-en="Indigo Whispers of the Yoruba Soul" data-yo="Ìhùn Àdìrẹ Ẹ̀mí Yorùbá">Indigo Whispers of the
+                Yoruba Soul</h2>
+            <p data-en="&lt;strong&gt;Adire&lt;/strong&gt; (ah-DEE-reh) is far more than fabric—it is the visual poetry of the Yoruba people, a centuries-old textile tradition where every pattern tells a story, every shade of indigo holds a secret, and every thread connects generations."
+                data-yo="&lt;strong&gt;Adire&lt;/strong&gt; (ah-DEE-reh) jẹ́ díẹ̀ sí i ju àṣà ọ̀tí—ó jẹ́ ọ̀rọ̀ àwòrán àwọn ènìyàn Yorùbá, àṣà àtijọ́ ọ̀tí ọ̀pọ̀lọpọ̀ ọ̀rúndún níbi tí àwọn àwòṣe kọ̀ọ̀kan máa ń sọ ìtàn, àwọn àwò dígò kọ̀ọ̀kan máa ń pa àṣírí, àti ìwé kọ̀ọ̀kan máa ń sopọ̀ àwọn ìran.">
+                <strong>Adire</strong> (ah-DEE-reh) is far more than fabric—it is the visual poetry of the Yoruba
+                people, a centuries-old textile tradition where every pattern tells a story, every shade of indigo holds
+                a secret, and every thread connects generations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Pattern Generator -->
+    <section id="generator">
+        <div class="generator-section">
+            <h2 data-en="Create Your Adire Pattern" data-yo="Ṣe Àwòṣe Adire Rẹ">Create Your Adire Pattern</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;"
+                data-en="Design your own traditional Adire pattern using our interactive generator. Choose from authentic techniques and customize colors to create unique textile art."
+                data-yo="Ṣe àwòṣe Adire àtijọ́ rẹ pẹ̀lú olùdá wa. Yàn lára ọgbọ́n àtijọ́ kí o sì ṣe àkànṣe àwọ̀ láti dá àwòrán ọ̀tí àjàfẹ́tọ̀.">
+                Design your own traditional Adire pattern using our interactive generator. Choose from authentic
+                techniques and customize colors to create unique textile art.
+            </p>
+
+            <div class="generator-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label data-en="Pattern Type" data-yo="Irú Àwòṣe">Pattern Type</label>
+                        <select id="patternType">
+                            <option value="oniko" data-en="Adire Oniko (Tie & Dye)"
+                                data-yo="Adire Oniko (Ìsọ àti Àdìrẹ)">Adire Oniko (Tie & Dye)</option>
+                            <option value="eleko" data-en="Adire Eleko (Starch Resist)"
+                                data-yo="Adire Eleko (Ìdáàbòbò Láfọwọ́)">Adire Eleko (Starch Resist)</option>
+                            <option value="alabere" data-en="Adire Alabere (Stitch Resist)"
+                                data-yo="Adire Alabere (Ìdáàbòbò Títì)">Adire Alabere (Stitch Resist)</option>
+                            <option value="sunbebe" data-en="Sunbebe (Comb Pattern)" data-yo="Sunbebe (Àwòṣe Dídí)">
+                                Sunbebe (Comb Pattern)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label data-en="Base Color" data-yo="Àwọ̀ Ìpilẹ̀">Base Color</label>
+                        <input type="color" id="baseColor" value="#1a237e">
+                    </div>
+
+                    <div class="control-group">
+                        <label data-en="Pattern Color" data-yo="Àwọ̀ Àwòṣe">Pattern Color</label>
+                        <input type="color" id="patternColor" value="#ffffff">
+                    </div>
+
+                    <div class="control-group">
+                        <label data-en="Pattern Size" data-yo="Ìtóbi Àwòṣe">Pattern Size</label>
+                        <input type="range" id="patternSize" min="20" max="100" value="50">
+                    </div>
+
+                    <div class="control-group">
+                        <label data-en="Complexity" data-yo="Ìṣòro">Complexity</label>
+                        <input type="range" id="complexity" min="1" max="10" value="5">
+                    </div>
+
+                    <button class="btn" onclick="generatePattern()" data-en="Generate Pattern"
+                        data-yo="Ṣe Àwòṣe">Generate Pattern</button>
+                    <button class="btn btn-secondary" onclick="downloadPattern()" data-en="Download Pattern"
+                        data-yo="Gbé Àwòṣe Wáyé">Download Pattern</button>
+                </div>
+
+                <div class="pattern-canvas-container">
+                    <canvas id="patternCanvas" width="500" height="500"></canvas>
+                    <div class="pattern-info" id="patternInfo">
+                        <h4 data-en="Pattern Information" data-yo="Àlàyé Àwòṣe">Pattern Information</h4>
+                        <p id="patternDescription"
+                            data-en="Select a pattern type and click 'Generate Pattern' to create your unique Adire design."
+                            data-yo="Yàn irú àwòṣe kí o sì tẹ 'Ṣe Àwòṣe' láti dá àwòṣe Adire àjàfẹ́tọ̀ rẹ.">
+                            Select a pattern type and click 'Generate Pattern' to create your unique Adire design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pattern Gallery -->
+    <section id="patterns">
+        <h2 data-en="The Visual Journey" data-yo="Ìrìn Àjò Àwòrán">The Visual Journey</h2>
+        <div class="pattern-grid">
+            <div class="pattern-card">
+                <div class="pattern-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/7c07d9ebf1dadeab683ce69748961b8d1dfb2237.JPG"
+                        alt="Traditional Adire Patterns">
+                </div>
+                <div class="pattern-content">
+                    <h3 data-en="Traditional Geometric Patterns" data-yo="Àwọn Àwòṣe Onílò Oníṣirò">Traditional
+                        Geometric Patterns</h3>
+                    <p data-en="Iconic indigo resist-dye technique showcasing the mathematical precision of Yoruba artisans"
+                        data-yo="Ọgbọ́n àdìrẹ dígò tí ó ń fi ìṣirò àwọn oníṣẹ́ Ọ̀gbọ́n Yorùbá hàn">Iconic indigo
+                        resist-dye technique showcasing the mathematical precision of Yoruba artisans</p>
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <div class="pattern-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/africanthings.org/3fcf60715834cbfdfd7344b36b73325e8e6acbd4.jpg"
+                        alt="Adire Craftsmanship">
+                </div>
+                <div class="pattern-content">
+                    <h3 data-en="The Artisan's Touch" data-yo="Ìfọwọ́kan Oníṣẹ́">The Artisan's Touch</h3>
+                    <p data-en="An artisan applying cassava paste resist—each movement is deliberate, each pattern ancestral"
+                        data-yo="Oníṣẹ́ tí ó ń láfọwọ́ àdábòbò kàsávà—ìgbésẹ̀ kọ̀ọ̀kan jẹ́ pípinnu, àwòṣe kọ̀ọ̀kan jẹ́ ti àwọn àwọn bàbá àwọn bàbá">
+                        An artisan applying cassava paste resist—each movement is deliberate, each pattern ancestral</p>
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <div class="pattern-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/indigoarts.com/8e6d925accfae3ca54b06abf9ae081d4135f7e01.jpg"
+                        alt="Adire Oniko">
+                </div>
+                <div class="pattern-content">
+                    <h3>Adire Oniko</h3>
+                    <p data-en="The circular patterns created by raffia tie-resist method, representing unity and continuity"
+                        data-yo="Àwọn àwòṣe ìyípo tí wọ́n ṣe pẹ̀lú ọgbọ́n ìsọ raffia, tó ń fi ìṣọ̀kan àti ìtẹ̀síwájú hàn">
+                        The circular patterns created by raffia tie-resist method, representing unity and continuity</p>
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <div class="pattern-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/assets-cdn.vam.ac.uk/e867fb0ae896ee79e9b19bf784e963d33dafe09b.jpg"
+                        alt="Historical Adire">
+                </div>
+                <div class="pattern-content">
+                    <h3 data-en="Historical Treasures" data-yo="Ọrọ̀ Àgbà">Historical Treasures</h3>
+                    <p data-en="Adire textile from the Victoria & Albert Museum archives, preserving heritage for the world"
+                        data-yo="Ọ̀tí Adire láti inú àwọn àkọsílẹ̀ Ilé ìtàn Victoria & Albert, tó ń tọ́jú àṣà fún àgbáyé">
+                        Adire textile from the Victoria & Albert Museum archives, preserving heritage for the world</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section id="techniques">
+        <div class="techniques">
+            <h2 data-en="Ancient Techniques" data-yo="Ọgbọ́n Àtijọ́">Ancient Techniques</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;"
+                data-en="Originating from &lt;strong&gt;Abeokuta&lt;/strong&gt; in southwestern Nigeria, Adire—which literally means &lt;em&gt;'tie and dye'&lt;/em&gt; in Yoruba—represents one of Africa's most sophisticated resist-dyeing traditions."
+                data-yo="Tí ó bẹ̀rẹ̀ láti &lt;strong&gt;Abẹ́òkúta&lt;/strong&gt; ní apá ìwọ̀-oòrùn Nàìjíríà, Adire—tó jẹ́ pé ó túmọ̀ sí &lt;em&gt;'ìsọ àti àdìrẹ'&lt;/em&gt; ní èdè Yorùbá—jẹ́ ọ̀kan lára àwọn àṣà àdìrẹ tó yàtọ̀ jùlọ ní Áfíríkà.">
+                Originating from <strong>Abeokuta</strong> in southwestern Nigeria, Adire—which literally means <em>"tie
+                    and dye"</em> in Yoruba—represents one of Africa's most sophisticated resist-dyeing traditions.
+            </p>
+
+            <div class="technique-list">
+                <div class="technique-item">
+                    <h4>Adire Oniko</h4>
+                    <p data-en="Raffia ties create organic, circular patterns symbolizing unity and the cyclical nature of life"
+                        data-yo="Ìsọ raffia máa ń dá àwọn àwòṣe ìyípo tí ó yẹ kí ó fi ìṣọ̀kan àti ìtẹ̀síwájú ìgbésí ayé hàn">
+                        Raffia ties create organic, circular patterns symbolizing unity and the cyclical nature of life
+                    </p>
+                </div>
+                <div class="technique-item">
+                    <h4>Adire Alabere</h4>
+                    <p data-en="Delicate stitching produces intricate linear designs requiring immense patience and skill"
+                        data-yo="Títì tó le máa ń dá àwọn àwòṣe onílò tó le tó tí ó ń beere ìfaradà àti ọgbọ́n púpọ̀">
+                        Delicate stitching produces intricate linear designs requiring immense patience and skill</p>
+                </div>
+                <div class="technique-item">
+                    <h4>Adire Eleko</h4>
+                    <p data-en="Cassava paste painted with feathers or stencils forms elaborate, story-telling motifs"
+                        data-yo="Àdábòbò kàsávà tí a lálẹ̀ pẹ̀lú ìyẹ́ ẹyẹ tàbí àwòṣe máa ń dá àwọn àmì tó le tó tí ó ń sọ ìtàn">
+                        Cassava paste painted with feathers or stencils forms elaborate, story-telling motifs</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; font-style: italic;"
+                data-en="Each technique requires days of meticulous work, with fabrics dipped repeatedly into fermented indigo vats until they achieve that signature deep, luminous blue."
+                data-yo="Ọgbọ́n kọ̀ọ̀kan nílò ọ̀pọ̀lọpọ̀ ọjọ́ iṣẹ́ tó le tó, pẹ̀lú àwọn aṣọ tí a máa ń tìí sinu àwọn ikòkò dígò tí ó ti bíjẹ títí di pé wọ́n bá àwò dígò jìn tó mọ́lẹ̀ yẹn.">
+                Each technique requires days of meticulous work, with fabrics dipped repeatedly into fermented indigo
+                vats until they achieve that signature deep, luminous blue.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pattern Meanings -->
+    <section id="meanings">
+        <div class="meanings-section">
+            <h2 data-en="Patterns That Speak" data-yo="Àwọn Àwòṣe Tí Ó Sọ̀rọ̀">Patterns That Speak</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;"
+                data-en="Every Adire design carries profound meaning. These aren't mere decorations; they're &lt;strong&gt;visual proverbs&lt;/strong&gt;, recording history, values, and daily life in geometric form."
+                data-yo="Àwòṣe Adire kọ̀ọ̀kan ní ìtumọ̀ tó jinlẹ̀. Àwọn wọ̀nyí kì í ṣe àwọn ohun ṣọ́ṣan nìkan; wọ́n jẹ́ &lt;strong&gt;àwọn ọ̀rọ̀ ìlú àwòrán&lt;/strong&gt;, tó ń kọ ìtàn, àwọn ìwà, àti ìgbésí ayé ojoojúmọ́ sí iṣẹ́ onílò.">
+                Every Adire design carries profound meaning. These aren't mere decorations; they're <strong>visual
+                    proverbs</strong>, recording history, values, and daily life in geometric form.
+            </p>
+
+            <table class="pattern-table">
+                <thead>
+                    <tr>
+                        <th data-en="Pattern Name" data-yo="Orúkọ Àwòṣe">Pattern Name</th>
+                        <th data-en="Meaning" data-yo="Ìtumọ̀">Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sunbebe</td>
+                        <td data-en="Baby's comb—representing new beginnings and innocence"
+                            data-yo="Dídí ọmọdé—tó ń fi ìbẹ̀rẹ̀ tuntun àti àìmọ̀ hàn">Baby's comb—representing new
+                            beginnings and innocence</td>
+                    </tr>
+                    <tr>
+                        <td>Olokun</td>
+                        <td data-en="Goddess of the sea—spiritual protection and abundance"
+                            data-yo="Òrìṣà òkun—ààbò ẹ̀mí àti ọ̀pọ̀">Goddess of the sea—spiritual protection and
+                            abundance</td>
+                    </tr>
+                    <tr>
+                        <td>Oke Mapo</td>
+                        <td data-en="Mapo Hill—connection to homeland and ancestral roots"
+                            data-yo="Òkè Mapo—ìṣọ̀kan pẹ̀lú ilẹ̀ bíbí àti ìpilẹ̀ àwọn bàbá àwọn bàbá">Mapo
+                            Hill—connection to homeland and ancestral roots</td>
+                    </tr>
+                    <tr>
+                        <td>Ibadandun</td>
+                        <td data-en="'We enjoy Ibadan'—community pride and belonging"
+                            data-yo="'A ní ìgbádùn ní Ìbàdàn'—ìgbéraga àgbáàgbà àti ìbátan">'We enjoy Ibadan'—community
+                            pride and belonging</td>
+                    </tr>
+                    <tr>
+                        <td>Eiye</td>
+                        <td data-en="Bird—freedom, aspiration, and the soul's journey"
+                            data-yo="Ẹyẹ—òmìnira, ìfẹ́ tó ga, àti ìrìn àjọ ẹmí">Bird—freedom, aspiration, and the soul's
+                            journey</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section>
+        <div class="quote-section">
+            <p class="quote-text"
+                data-en="&quot;Adire is not just a pattern but an identity. I grew up with it; I breathe with it.&quot;"
+                data-yo="&quot;Adire kì í ṣe àwòṣe nìkan ṣùgbọ́n ó jẹ́ ìdánimọ̀. Mo dàgbà pẹ̀lú rẹ̀; mo ń mí pẹ̀lú rẹ̀.&quot;">
+                "Adire is not just a pattern but an identity. I grew up with it; I breathe with it."
+            </p>
+            <p class="quote-author" data-en="— Ayodeji Basirat Atinuke, third-generation Adire maker"
+                data-yo="— Ayodeji Basirat Atinuke, olùṣe Adire ìran kẹta">— Ayodeji Basirat Atinuke, third-generation
+                Adire maker</p>
+        </div>
+    </section>
+
+    <!-- Cultural Significance -->
+    <section id="culture">
+        <h2 data-en="Cultural Significance" data-yo="Ìtumọ̀ Àṣà">Cultural Significance</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;"
+            data-en="In Yoruba culture, Adire serves as more than clothing—it is a carrier of identity, history, and spiritual connection."
+            data-yo="Nínú àṣà Yorùbá, Adire jẹ́ ohun tí ó tóbi sí i ju aṣọ lọ—ó jẹ́ olùgbé ìdánimọ̀, ìtàn, àti ìṣọ̀kan ẹ̀mí.">
+            In Yoruba culture, Adire serves as more than clothing—it is a carrier of identity, history, and spiritual
+            connection.
+        </p>
+
+        <div class="significance-grid">
+            <div class="significance-card">
+                <div class="significance-icon">👑</div>
+                <h4 data-en="Ceremonial Dress" data-yo="Aṣọ Àjọyọ̀">Ceremonial Dress</h4>
+                <p data-en="Worn at weddings, festivals, and funerals to honor tradition"
+                    data-yo="A wọ̀ ní ìgbéyàwó, àjọyọ̀, àti ìsìnkú láti bọwọ̀ fún àṣà">Worn at weddings, festivals, and
+                    funerals to honor tradition</p>
+            </div>
+            <div class="significance-card">
+                <div class="significance-icon">⚖️</div>
+                <h4 data-en="Status Symbols" data-yo="Àmì Ipo">Status Symbols</h4>
+                <p data-en="Indicating social standing and family heritage" data-yo="Tó ń fi ipo àgbáyé àti ìdílé hàn">
+                    Indicating social standing and family heritage</p>
+            </div>
+            <div class="significance-card">
+                <div class="significance-icon">📖</div>
+                <h4 data-en="Storytelling" data-yo="Ìtàn">Storytelling</h4>
+                <p data-en="Preserving oral history through visual language"
+                    data-yo="Tí ó ń tọ́jú ìtàn ẹnu àti ẹnu nípasẹ̀ èdè àwòrán">Preserving oral history through visual
+                    language</p>
+            </div>
+            <div class="significance-card">
+                <div class="significance-icon">💪</div>
+                <h4 data-en="Empowerment" data-yo="Ìdáǹdígè">Empowerment</h4>
+                <p data-en="Economic independence for women artisans"
+                    data-yo="Ìmúrasílẹ̀ ọrọ̀-ajé fún àwọn oníṣẹ́ obìnrin">Economic independence for women artisans</p>
+            </div>
+            <div class="significance-card">
+                <div class="significance-icon">🙏</div>
+                <h4 data-en="Spiritual Connection" data-yo="Ìṣọ̀kan Ẹ̀mí">Spiritual Connection</h4>
+                <p data-en="Link to the goddess Iya Mapo and ancestral spirits"
+                    data-yo="Ìsopọ̀ pẹ̀lú òrìṣà Iya Mapo àti ẹ̀mí àwọn bàbá àwọn bàbá">Link to the goddess Iya Mapo and
+                    ancestral spirits</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-top: 3rem;" data-en="The Women of Indigo" data-yo="Àwọn Obìnrin Dígò">The
+            Women of Indigo</h3>
+        <p style="max-width: 800px; margin: 0 auto;"
+            data-en="Adire has always been women's work—a matrilineal heritage passed from grandmother to daughter, creating economic sovereignty stitch by stitch. During the &lt;strong&gt;Abeokuta Women's Revolt of 1946-1949&lt;/strong&gt;, organizer Funmilayo Ransome-Kuti had thousands of women wear Adire as a uniform of resistance, transforming the cloth into a wearable manifesto of solidarity."
+            data-yo="Adire ti jẹ́ iṣẹ́ àwọn obìnrin láti ìgbà àtijọ́—àṣà ìyá tí a ń gba láti ọ̀dọ̀ ìyá àwọn bàbá sí ọmọbìnrin, tó ń dá ìjọba ọrọ̀-ajé aládáni nítorí títì kan náà. Ní àsìkò &lt;strong&gt;Ìwà àìtọ̀wò Obìnrin Abẹ́òkúta 1946-1949&lt;/strong&gt;, olùṣọ́ àwọn ọ̀rọ̀ Funmilayo Ransome-Kuti ní àwọn obìnrin ọ̀kẹ́ kan lọ wọ Adire gẹ́gẹ́ bí aṣọ ìdíje, tó yí aṣọ náà padà sí ìwé ìròyìn tí a lè wọ̀ tó ń fi ìṣọ̀kan hàn.">
+            Adire has always been women's work—a matrilineal heritage passed from grandmother to daughter, creating
+            economic sovereignty stitch by stitch. During the <strong>Abeokuta Women's Revolt of 1946-1949</strong>,
+            organizer Funmilayo Ransome-Kuti had thousands of women wear Adire as a uniform of resistance, transforming
+            the cloth into a wearable manifesto of solidarity.
+        </p>
+        <p style="max-width: 800px; margin: 1rem auto 0;"
+            data-en="Master artist &lt;strong&gt;Chief Nike Davies-Okundaye&lt;/strong&gt;, founder of the Nike Art Centres, continues this legacy today, training thousands of young women and elevating Adire to global recognition."
+            data-yo="Olórin àgbà &lt;strong&gt;Chief Nike Davies-Okundaye&lt;/strong&gt;, olùdá àwọn Ilé Ìtàn Nike, tẹ̀síwájú àṣà yìí lónìí, tó ń kọ́ àwọn obìnrin òdò ó lé ní ẹgbẹ̀rún, tó sì ń gbé Adire ga sí ìmọ̀ àgbáyé.">
+            Master artist <strong>Chief Nike Davies-Okundaye</strong>, founder of the Nike Art Centres, continues this
+            legacy today, training thousands of young women and elevating Adire to global recognition.
+        </p>
+    </section>
+
+    <!-- Back to Home -->
+    <section style="text-align: center;">
+        <a href="index.html" class="back-link" data-en="← Back to Home" data-yo="← Padà sí Àkọ́lẹ̀">← Back to Home</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-en="&copy; 2026 The Art of Adire. Celebrating Nigerian Cultural Heritage."
+            data-yo="&copy; 2026 Ọ̀gbọ́n Adire. Àjọyọ̀ Àṣà Nàìjíríà.">&copy; 2026 The Art of Adire. Celebrating Nigerian
+            Cultural Heritage.</p>
+    </footer>
+
+    <script>
+        // Language Switching Functionality
+        let currentLang = 'en';
+
+        function switchLang(lang) {
+            currentLang = lang;
+
+            // Update button states
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-yo').classList.toggle('active', lang === 'yo');
+
+            // Update all elements with data-en and data-yo attributes
+            document.querySelectorAll('[data-en][data-yo]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
+                    // For form elements, update placeholder or options if needed
+                    return;
+                }
+                element.innerHTML = element.getAttribute(`data-${lang}`);
+            });
+
+            // Update select options
+            document.querySelectorAll('option[data-en][data-yo]').forEach(option => {
+                option.textContent = option.getAttribute(`data-${lang}`);
+            });
+
+            // Save preference
+            localStorage.setItem('adire-lang', lang);
+        }
+
+        // Check for saved language preference
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('adire-lang');
+            if (savedLang && savedLang !== 'en') {
+                switchLang(savedLang);
+            }
+
+            // Initialize canvas with default pattern
+            generatePattern();
+        });
+
+        // Pattern Generator Functionality
+        const canvas = document.getElementById('patternCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function generatePattern() {
+            const type = document.getElementById('patternType').value;
+            const baseColor = document.getElementById('baseColor').value;
+            const patternColor = document.getElementById('patternColor').value;
+            const size = parseInt(document.getElementById('patternSize').value);
+            const complexity = parseInt(document.getElementById('complexity').value);
+
+            // Clear canvas
+            ctx.fillStyle = baseColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = patternColor;
+            ctx.strokeStyle = patternColor;
+
+            switch (type) {
+                case 'oniko':
+                    drawOniko(size, complexity);
+                    updateDescription('oniko');
+                    break;
+                case 'eleko':
+                    drawEleko(size, complexity);
+                    updateDescription('eleko');
+                    break;
+                case 'alabere':
+                    drawAlabere(size, complexity);
+                    updateDescription('alabere');
+                    break;
+                case 'sunbebe':
+                    drawSunbebe(size, complexity);
+                    updateDescription('sunbebe');
+                    break;
+            }
+        }
+
+        function drawOniko(size, complexity) {
+            // Tie-dye circular patterns
+            const circles = complexity * 3;
+            for (let i = 0; i < circles; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = size / 2 + Math.random() * size;
+
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Add inner circles for tie-dye effect
+                ctx.fillStyle = document.getElementById('baseColor').value;
+                ctx.beginPath();
+                ctx.arc(x, y, radius * 0.7, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = document.getElementById('patternColor').value;
+                ctx.beginPath();
+                ctx.arc(x, y, radius * 0.4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function drawEleko(size, complexity) {
+            // Starch resist geometric patterns
+            const cols = Math.floor(canvas.width / size);
+            const rows = Math.floor(canvas.height / size);
+
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    const x = i * size + size / 2;
+                    const y = j * size + size / 2;
+
+                    if ((i + j) % 2 === 0) {
+                        // Diamond shape
+                        ctx.beginPath();
+                        ctx.moveTo(x, y - size / 3);
+                        ctx.lineTo(x + size / 3, y);
+                        ctx.lineTo(x, y + size / 3);
+                        ctx.lineTo(x - size / 3, y);
+                        ctx.closePath();
+                        ctx.fill();
+                    } else {
+                        // Cross shape
+                        const crossSize = size / 4;
+                        ctx.fillRect(x - crossSize / 2, y - size / 3, crossSize, size / 1.5);
+                        ctx.fillRect(x - size / 3, y - crossSize / 2, size / 1.5, crossSize);
+                    }
+                }
+            }
+        }
+
+        function drawAlabere(size, complexity) {
+            // Stitch resist linear patterns
+            const lines = complexity * 5;
+            const spacing = canvas.height / lines;
+
+            for (let i = 0; i < lines; i++) {
+                const y = i * spacing + spacing / 2;
+
+                // Zigzag pattern
+                ctx.beginPath();
+                ctx.lineWidth = size / 10;
+                for (let x = 0; x < canvas.width; x += 20) {
+                    const offset = (x / 20) % 2 === 0 ? -10 : 10;
+                    if (x === 0) ctx.moveTo(x, y + offset);
+                    else ctx.lineTo(x, y + offset);
+                }
+                ctx.stroke();
+
+                // Add dots
+                for (let x = 0; x < canvas.width; x += size) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, size / 8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        function drawSunbebe(size, complexity) {
+            // Comb pattern - radiating lines
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const rays = complexity * 8;
+
+            for (let i = 0; i < rays; i++) {
+                const angle = (i / rays) * Math.PI * 2;
+                const length = Math.min(canvas.width, canvas.height) / 2;
+
+                ctx.beginPath();
+                ctx.lineWidth = size / 15;
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * length,
+                    centerY + Math.sin(angle) * length
+                );
+                ctx.stroke();
+
+                // Add comb teeth
+                for (let r = 20; r < length; r += size / 2) {
+                    const x = centerX + Math.cos(angle) * r;
+                    const y = centerY + Math.sin(angle) * r;
+                    const perpAngle = angle + Math.PI / 2;
+
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(
+                        x + Math.cos(perpAngle) * 10,
+                        y + Math.sin(perpAngle) * 10
+                    );
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function updateDescription(type) {
+            const descriptions = {
+                en: {
+                    oniko: "<strong>Adire Oniko</strong> uses raffia ties to create organic circular patterns. These circles represent unity, continuity, and the cyclical nature of life in Yoruba philosophy.",
+                    eleko: "<strong>Adire Eleko</strong> employs cassava starch paste applied with feathers or stencils. This technique allows for precise geometric patterns and storytelling motifs.",
+                    alabere: "<strong>Adire Alabere</strong> uses delicate stitching to create resist patterns. The stitched areas remain undyed, producing intricate linear designs.",
+                    sunbebe: "<strong>Sunbebe</strong> (Baby's Comb) features radiating lines from a central point, symbolizing new beginnings, growth, and the spreading of blessings."
+                },
+                yo: {
+                    oniko: "<strong>Adire Oniko</strong> máa ń lò ìsọ raffia láti dá àwọn àwòṣe ìyípo oníbíí. Àwọn ìyípo wọ̀nyí fi ìṣọ̀kan, ìtẹ̀síwájú, àti ìtẹ̀síwájú ìgbésí ayé ní ọ̀gbọ́n Yorùbá hàn.",
+                    eleko: "<strong>Adire Eleko</strong> máa ń lò àdábòbò kàsávà tí a lálẹ̀ pẹ̀lú ìyẹ́ ẹyẹ tàbí àwòṣe. Ọgbọ́n yìí gbà á láàyè láti dá àwọn àwòṣe onílò tó le tó àti àmì ìtàn.",
+                    alabere: "<strong>Adire Alabere</strong> máa ń lò títì tó le láti dá àwọn àwòṣe ìdáàbòbò. Àwọn ààyè títì náà máa ń wà láìní àdìrẹ, tó ń dá àwọn àwòṣe onílò tó le tó.",
+                    sunbebe: "<strong>Sunbebe</strong> (Dídí ọmọdé) ní àwọn ìlà tó ń yàjú láti ibi àárín kan, tó ń fi ìbẹ̀rẹ̀ tuntun, ìdàgbàsókè, àti ìyàsọ́tọ̀ ìbùkún hàn."
+                }
+            };
+
+            document.getElementById('patternDescription').innerHTML = descriptions[currentLang][type];
+        }
+
+        function downloadPattern() {
+            const link = document.createElement('a');
+            link.download = `adire-pattern-${Date.now()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Auto-generate on input change
+        document.querySelectorAll('#patternType, #baseColor, #patternColor, #patternSize, #complexity').forEach(input => {
+            input.addEventListener('change', generatePattern);
+            input.addEventListener('input', generatePattern);
+        });
+    </script>
+
+</body>
+
+</html>
